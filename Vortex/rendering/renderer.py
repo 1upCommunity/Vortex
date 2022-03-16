@@ -6,7 +6,7 @@ class VortexWindow(Window):
     def __init__(self):
         self.rendering_list = []
         self.batch = pyglet.graphics.Batch()
-        super().__init__()
+        super().__init__(resizable=True)
         
         # window props
         self.width = 1800
