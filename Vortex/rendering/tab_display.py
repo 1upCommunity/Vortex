@@ -16,6 +16,12 @@ class Tab:
             "screen_record": False,
         }
 
+    def draw(self, parent):
+        text = parent.font.render(self.name, True, parent.transparent)
+        text_rect = text.get_rect()
+        text_rect.center = (0, 10)
+        parent.screen.blit(text, text_rect)
+
 class VortexTabDisplay:
     def __init__(self, parent_window):
         self.screen = pygame.display.set_mode((800, 600), pygame.NOFRAME) # For borderless, use pygame.NOFRAME
@@ -49,8 +55,6 @@ class VortexTabDisplay:
                 quit()
 
         for tab in self.tabs:
-            # self.screen.blit(tab.icon, (0, 0))
-            # draw text
             self.font.render(tab.name, True, (255, 255, 255))
 
         pygame.display.flip()
