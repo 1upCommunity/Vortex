@@ -15,7 +15,7 @@ def update_deps():
     if os.path.isfile("last_update.pickle"):
         last_update = pickle.load(open("last_update.pickle", "rb"))
         if last_update < time.time() - 3600 * 12:
-            logger.log("Last update was more than 10 hours ago. Updating dependencies...")
+            logger.log("VortexDependencyManager", "Last update was more than 10 hours ago. Updating dependencies...")
             for dep in tqdm.tqdm(deps):
                 os.system(f'{path} -m pip install --upgrade {dep}')
             pickle.dump(time.time(), open("last_update.pickle", "wb"))
