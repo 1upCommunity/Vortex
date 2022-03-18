@@ -70,7 +70,8 @@ class VortexHTMLParser:
         return: self
         """
 
-    def parse(self, html_code):
+    @staticmethod
+    def parse(html_code):
         """
         parse
 

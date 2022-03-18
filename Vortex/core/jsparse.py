@@ -16,7 +16,8 @@ class VortexJSParser:
         return: self
         """
 
-    def parse(self, js_code):
+    @staticmethod
+    def parse(js_code):
         """
         parse
 
