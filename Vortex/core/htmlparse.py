@@ -83,5 +83,4 @@ class VortexHTMLParser:
         parser = Parser() # create the parser
         parser.feed(html_code) # feed the parser
         ret = parser.ret # get the return value
-        del parser # delete the parser
         return ret # return the return value
