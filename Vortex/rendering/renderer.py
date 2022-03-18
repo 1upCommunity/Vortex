@@ -38,7 +38,8 @@ class VortexWindow(Window):
         """
         refresh_size
 
-        A solution to the wierd white line that appears in the starting and goes away after the first resize.
+        A solution to the wierd white line that appears 
+        in the starting and goes away after the first resize.
 
         *args: Receives the pyglet dt argument.
 
@@ -63,7 +64,7 @@ class VortexWindow(Window):
 
         Update the window.
 
-        dt: The time since the last update. (It has no use here, its just used to prevent ArgumentError.)
+        dt: The time since the last update. 
 
         return: None
         """
