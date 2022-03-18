@@ -1,26 +1,23 @@
-import dependency_checker
-import dependency_installer
-import dependency_updater
-import logger
+# internal imports
+import dependency_checker, dependency_installer, dependency_updater, logger
+from rendering import *
 
-# check python version
-import sys
-if sys.version_info < (3, 6):
+# external imports
+import pyglet, sys
+
+# check if python version is too old. If it is, exit.
+if sys.version_info < (3, 6): # if python version is less than 3.6
     logger.critical("Vortex", "Python version is too old. Please use python 3.6 or higher.")
     sys.exit(1)
 
-# check dependencies
-if not dependency_checker.check_deps():
-    dependency_installer.install_deps()
-    if not dependency_checker.check_deps():
-        logger.warn("Vortex", "Dependencies are not installed. Please install them manually.")
+# check all deps and update them if needed
+if not dependency_checker.check_deps(): # if any deps are missing
+    dependency_installer.install_deps() # install them
+    if not dependency_checker.check_deps(): # if any deps are still missing
+        logger.warn("Vortex", "Dependencies are not installed. Please install them manually.") # warn user and exit
         sys.exit(1)
 else:
-    dependency_updater.update_deps()
+    dependency_updater.update_deps() # update deps
 
-from rendering import *
-import pyglet
-
-window = VortexWindow()
-
-pyglet.app.run()
+window = VortexWindow() # create the window
+pyglet.app.run() # run the app 

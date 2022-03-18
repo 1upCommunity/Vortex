@@ -1,8 +1,29 @@
+# external imports
 import pyjsparser
 
 class VortexJSParser:
+    """
+    VortexJSParser
+
+    A class to parse javascript code.
+    """
     def __init__(self):
-        pass
+        """
+        __init__
+        
+        Initialize the parser.
+        
+        return: self
+        """
 
     def parse(self, js_code):
-        return pyjsparser.parse(js_code)
+        """
+        parse
+
+        Parse the javascript code.
+
+        js_code: The javascript code.
+
+        return: dict
+        """
+        return pyjsparser.parse(js_code) # parse the javascript code

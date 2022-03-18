@@ -1,28 +1,35 @@
-# imports
-import os
-import sys
-import importlib
+# internal imports
+import logger
 
-deps = importlib.import_module("dependency_list").deps
+# external imports
+import os, sys, importlib
+
+deps = importlib.import_module("dependency_list").deps # get dependency list
 
 def check_deps():
-    # get all package names
-    pkgs = []
-    path = sys.executable.split("python.exe")[0] + "Lib\\site-packages"
-    for i in os.listdir(path):
-        if i.endswith(".egg-info"):
-            pkgs.append(i.split(".")[0])
-        else:
-            pkgs.append(i)
+    """
+    check_deps
 
-    for dep in deps:
-        if dep not in pkgs:
-            return False
+    Check if all dependencies are installed.
 
-    return True
+    return: bool
+    """
+    pkgs = [] # list of packages
+    path = sys.executable.split("python.exe")[0] + "Lib\\site-packages" # get path to site-packages
+    for i in os.listdir(path): # loop through all files in site-packages
+        if i.endswith(".egg-info"): # if it is an egg-info file
+            pkgs.append(i.split(".")[0]) # add the package name to the list
+        else: # if it is a folder
+            pkgs.append(i) # add the folder name to the list
+
+    for dep in deps: # loop through all dependencies
+        if dep not in pkgs: # if the dependency is not installed
+            return False # return false, exits the function
+
+    return True # return true if all dependencies are installed
 
 if __name__ == "__main__":
-    if check_deps():
-        print("All dependencies are installed.")
-    else:
-        print("Some dependencies are missing.")
+    if check_deps(): # check for dependencies
+        logger.log("VortexDependencyManager", "All dependencies are installed.") # if all dependencies are installed, log this
+    else: # if not, 
+        logger.log("VortexDependencyManager", "Some dependencies are missing.") # log this
