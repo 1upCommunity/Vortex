@@ -1,6 +1,6 @@
 # internal imports
 import dependency_checker, dependency_installer, dependency_updater, logger
-from rendering import *
+from rendering import VortexWindow
 
 # external imports
 import pyglet, sys

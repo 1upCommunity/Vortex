@@ -1,9 +1,9 @@
 # internal imports
-from rendering import *
+from rendering import VortexInfo
 
 # external imports
 import pyglet
-from pyglet.window import *
+from pyglet.window import Window
 
 class VortexWindow(Window):
     """
