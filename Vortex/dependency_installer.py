@@ -1,8 +1,12 @@
 # external imports
-import os, tqdm, sys, importlib
+import os
+import tqdm
+import sys
+import importlib
 
-deps = importlib.import_module("dependency_list").deps # get dependency list
-path = sys.executable # get path to python
+deps = importlib.import_module("dependency_list").deps  # get dependency list
+path = sys.executable  # get path to python
+
 
 def install_deps():
     """
@@ -12,8 +16,9 @@ def install_deps():
 
     return: None
     """
-    for dep in tqdm.tqdm(deps): # loop through all dependencies
-        os.system(f"{path} -m pip install {dep}") # install the dependency
+    for dep in tqdm.tqdm(deps):  # loop through all dependencies
+        os.system(f"{path} -m pip install {dep}")  # install the dependency
+
 
 if __name__ == '__main__':
-    install_deps() # install dependencies
+    install_deps()  # install dependencies

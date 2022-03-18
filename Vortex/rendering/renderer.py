@@ -5,12 +5,14 @@ from rendering import VortexInfo
 import pyglet
 from pyglet.window import Window
 
+
 class VortexWindow(Window):
     """
     VortexWindow
 
     This class is the main window of the application.
     """
+
     def __init__(self):
         """
         __init__
@@ -19,18 +21,18 @@ class VortexWindow(Window):
 
         return: self
         """
-        super().__init__(resizable=True) # initialize the base class
-        self.batch = pyglet.graphics.Batch() # create a batch
-        self.frame = 0 # frame counter
-        
-        self.resizable = True # allow resizing
-        self.tab_bar_height = 20 # tab bar height
-        self.set_caption("Vortex") # set window title
+        super().__init__(resizable=True)  # initialize the base class
+        self.batch = pyglet.graphics.Batch()  # create a batch
+        self.frame = 0  # frame counter
 
-        self.info_label = VortexInfo(self) # create the info label
+        self.resizable = True  # allow resizing
+        self.tab_bar_height = 20  # tab bar height
+        self.set_caption("Vortex")  # set window title
 
-        pyglet.clock.schedule_interval(self.on_update, 1/60) # schedule update
-        pyglet.clock.schedule_once(self.refresh_size, 0) # schedule draw
+        self.info_label = VortexInfo(self)  # create the info label
+
+        pyglet.clock.schedule_interval(self.on_update, 1/60)  # schedule update
+        pyglet.clock.schedule_once(self.refresh_size, 0)  # schedule draw
 
     def refresh_size(self, *args):
         """
@@ -42,8 +44,8 @@ class VortexWindow(Window):
 
         return: None
         """
-        self.set_size(self.width, self.height) # set the size of the window
-        
+        self.set_size(self.width, self.height)  # set the size of the window
+
     def on_draw(self):
         """
         on_draw
@@ -52,8 +54,8 @@ class VortexWindow(Window):
 
         return: None
         """
-        self.clear() # clear the window
-        self.batch.draw() # draw the batch
+        self.clear()  # clear the window
+        self.batch.draw()  # draw the batch
 
     def on_update(self, dt):
         """
@@ -65,5 +67,5 @@ class VortexWindow(Window):
 
         return: None
         """
-        self.frame += 1 # increment the frame counter
-        self.info_label.update() # update the info label
+        self.frame += 1  # increment the frame counter
+        self.info_label.update()  # update the info label

@@ -1,12 +1,14 @@
 # internal imports
 from html.parser import HTMLParser
 
+
 class Parser(HTMLParser):
     """
     Parser
 
     A class to parse HTML.
     """
+
     def __init__(self):
         """
         __init__
@@ -15,8 +17,8 @@ class Parser(HTMLParser):
 
         return: self
         """
-        super().__init__() # initialize the base class
-        self.ret = [] # the return value
+        super().__init__()  # initialize the base class
+        self.ret = []  # the return value
 
     def handle_starttag(self, tag, attrs):
         """
@@ -29,7 +31,8 @@ class Parser(HTMLParser):
 
         return: None
         """
-        self.ret.append({"tag": tag, "attrs": attrs, "close": False}) # add the tag to the return value
+        self.ret.append({"tag": tag, "attrs": attrs, "close": False}
+                        )  # add the tag to the return value
 
     def handle_endtag(self, tag):
         """
@@ -41,7 +44,8 @@ class Parser(HTMLParser):
 
         return: None
         """
-        self.ret.append({"tag": tag, "close": True}) # add the tag to the return value
+        self.ret.append({"tag": tag, "close": True}
+                        )  # add the tag to the return value
 
     def handle_data(self, data):
         """
@@ -53,7 +57,8 @@ class Parser(HTMLParser):
 
         return: None
         """
-        self.ret.append({"data": data}) # add the data to the return value
+        self.ret.append({"data": data})  # add the data to the return value
+
 
 class VortexHTMLParser:
     """
@@ -61,6 +66,7 @@ class VortexHTMLParser:
 
     A class to parse HTML.
     """
+
     def __init__(self):
         """
         __init__
@@ -81,7 +87,7 @@ class VortexHTMLParser:
 
         return: list
         """
-        parser = Parser() # create the parser
-        parser.feed(html_code) # feed the parser
-        ret = parser.ret # get the return value
-        return ret # return the return value
+        parser = Parser()  # create the parser
+        parser.feed(html_code)  # feed the parser
+        ret = parser.ret  # get the return value
+        return ret  # return the return value
