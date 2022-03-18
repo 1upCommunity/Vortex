@@ -28,6 +28,8 @@ class VortexWindow(Window):
         self.resizable = True  # allow resizing
         self.tab_bar_height = 20  # tab bar height
         self.set_caption("Vortex")  # set window title
+        self.set_icon(pyglet.image.load( # logo image
+            "assets/VortexLogoTransparent.png"))
 
         self.info_label = VortexInfo(self)  # create the info label
 
